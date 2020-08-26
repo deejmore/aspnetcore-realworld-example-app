@@ -39,3 +39,8 @@ steps:
     BlackDuckService: 'telstrahealth-blackduck-service-connection'
     DetectVersion: 'latest'
     DetectArguments: '--detect.project.name=aspetcore-realword-example-app --detect.project.version.name=development'
+
+- task: SynopsysPolaris@1
+  inputs:
+    polarisService: 'telstrahealth-polaris-server'
+    polarisCommand: 'capture'
