@@ -33,10 +33,7 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: SynopsysDetectTask@2
+- task: SynopsysPolaris@1
   inputs:
-    Products: 'ALL'
-    BlackDuckService: 'telstrahealth-blackduck-service-connection'
-    PolarisService: 'telstra-health-polaris'
-    DetectVersion: 'latest'
-    DetectArguments: '--detect.project.name=aspnetcore-realword-example-app --detect.project.version.name=develop -de --polaris.command=“analyze --coverity-ignore-capture-failure"'
+    polarisService: 'telstrahealth-polaris-server'
+    polarisCommand: 'analyze'
