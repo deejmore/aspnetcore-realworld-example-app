@@ -57,7 +57,6 @@ steps:
   inputs:
     polarisService: 'csprod-polaris-server-service-connection'
     polarisCommand: 'capture'
-    waitForIssues: true
 
 - task: CmdLine@2
   displayName: Display current path
