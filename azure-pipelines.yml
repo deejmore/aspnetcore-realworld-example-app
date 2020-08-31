@@ -32,7 +32,7 @@ steps:
   inputs:
     Products: 'ALL'
     BlackDuckService: 'poc188-blackduck-service-connection'
-    PolarisService: 'csprod-polaris-server-service-connection'
+    PolarisService: 'csprod-polaris-service-connection'
     DetectVersion: 'latest'
     DetectArguments: '--detect.project.name=aspnetcore-realword-example-app --detect.project.version.name=develop -de --polaris.command=analyze --coverity-ignore-capture-failure'
 
