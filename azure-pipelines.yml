@@ -51,7 +51,7 @@ steps:
   displayName: Run Synopsys Polaris for Coverity
   inputs:
     polarisService: 'csprod-polaris-server-service-connection'
-    polarisCommand: 'capture'
+    polarisCommand: 'analyze'
 
 - task: CmdLine@2
   displayName: Display current path
@@ -60,7 +60,13 @@ steps:
     failOnStderr: true
 
 - task: CmdLine@2
+  displayName: Show build-log.txt file in this directory
+  inputs:
+    script: 'type .synopsys\polaris\coverity-tools-win64-2020.06\idir\build-log.txt'
+    failOnStderr: false
+
+- task: CmdLine@2
   displayName: Show build-log.txt file
   inputs:
-    script: 'type .synopsys\polaris\coverity-tools-win64-2020.06\idir\builld-log.txt'
-    failOnStderr: true
+    script: 'type .synopsys\polaris\data\coverity\2020.06\idir\build-log.txt'
+    failOnStderr: false
