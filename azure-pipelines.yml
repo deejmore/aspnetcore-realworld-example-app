@@ -40,6 +40,13 @@ steps:
     DetectVersion: 'latest'
     DetectArguments: '--detect.project.name=aspnetcore-realword-example-app --detect.project.version.name=develop'
 
+
+- task: SynopsysPolaris@1
+  inputs:
+    polarisService: 'csprod-polaris-server-service-connection'
+    polarisCommand: '-c polaris.yml setup'
+    waitForIssues: false
+
 - task: CmdLine@2
   displayName: Display Polaris YAML file
   inputs:
@@ -49,7 +56,7 @@ steps:
 - task: SynopsysPolaris@1
   inputs:
     polarisService: 'csprod-polaris-server-service-connection'
-    polarisCommand: 'analyze'
+    polarisCommand: 'capture'
     waitForIssues: true
 
 - task: CmdLine@2
