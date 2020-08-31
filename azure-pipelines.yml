@@ -40,6 +40,7 @@ steps:
     failOnStderr: true
 
 - task: SynopsysDetectTask@2
+  displayName: Running Detect for blackduck and polaris
   inputs:
     Products: 'ALL'
     BlackDuckService: 'poc188-blackduck-service-connection'
@@ -53,5 +54,5 @@ steps:
 - task: CmdLine@2
   displayName: Show build-log.txt file
   inputs:
-    script: 'type .synopsys\polaris\data\coverity\2020.06\idir\builld-log.txt'
-    #failOnStderr: false # Optional
+    script: 'type .synopsys\polaris\coverity-tools-win64-2020.06\idir\builld-log.txt'
+    failOnStderr: true
