@@ -28,12 +28,18 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: VSTest@2
+- task: SynopsysDetectTask@2
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    Products: 'ALL'
+    BlackDuckService: 'poc188-blackduck-service-connection'
+    PolarisService: 'telstra-health-polaris'
+    DetectVersion: 'latest'
+    DetectArguments: '--detect.project.name=aspnetcore-realword-example-app --detect.project.version.name=develop -de --polaris.command=analyze --coverity-ignore-capture-failure'
 
-- task: SynopsysPolaris@1
+# Command line
+# Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+- task: CmdLine@2
   inputs:
-    polarisService: 'telstrahealth-polaris-server'
-    polarisCommand: 'analyze'
+    workingDirectory: 'D:/a/1/s/.synopsys/polaris/data/coverity/2020.06/idir/'
+    script: 'echo ${workingDirectory}/build-log.txt'
+    #failOnStderr: false # Optional
