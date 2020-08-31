@@ -28,6 +28,17 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- task: CmdLine@2
+  displayName: List folder contents
+  inputs:
+    script: dir
+
+- task: CmdLine@2
+  displayName: Display Polaris YAML file
+  inputs:
+    script: 'type polaris.yml'
+    failOnStderr: true
+
 - task: SynopsysDetectTask@2
   inputs:
     Products: 'ALL'
@@ -40,6 +51,7 @@ steps:
 # Command line
 # Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
 - task: CmdLine@2
+  displayName: Show build-log.txt file
   inputs:
     script: 'type .synopsys\polaris\data\coverity\2020.06\idir\builld-log.txt'
     #failOnStderr: false # Optional
