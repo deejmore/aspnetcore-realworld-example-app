@@ -54,19 +54,14 @@ steps:
     polarisCommand: 'analyze'
 
 - task: CmdLine@2
-  displayName: Display current path
+  displayName: Show build-log.txt file in data coverity
   inputs:
-    script: 'echo $(System.DefaultWorkingDirectory) - ${Path}'
-    failOnStderr: true
+    script: 'type .synopsys\polaris\data\coverity\2020.06\idir\build-log.txt'
+    failOnStderr: false
 
 - task: CmdLine@2
-  displayName: Show build-log.txt file in this directory
+  displayName: Show build-log.txt file in coverity tools
   inputs:
     script: 'type .synopsys\polaris\coverity-tools-win64-2020.06\idir\build-log.txt'
     failOnStderr: false
 
-- task: CmdLine@2
-  displayName: Show build-log.txt file
-  inputs:
-    script: 'type .synopsys\polaris\data\coverity\2020.06\idir\build-log.txt'
-    failOnStderr: false
