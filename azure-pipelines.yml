@@ -35,11 +35,11 @@ steps:
     PolarisService: 'csprod-polaris-service-connection'
     DetectVersion: 'latest'
     DetectArguments: '--detect.project.name=aspnetcore-realword-example-app --detect.project.version.name=develop -de --polaris.command=analyze --coverity-ignore-capture-failure'
+    
 
 # Command line
 # Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
 - task: CmdLine@2
   inputs:
-    workingDirectory: 'D:/a/1/s/.synopsys/polaris/data/coverity/2020.06/idir/'
-    script: 'echo ${workingDirectory}/build-log.txt'
+    script: 'type .synopsys\polaris\data\coverity\2020.06\idir\builld-log.txt'
     #failOnStderr: false # Optional
