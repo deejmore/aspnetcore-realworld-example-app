@@ -60,6 +60,12 @@ steps:
     waitForIssues: true
 
 - task: CmdLine@2
+  displayName: Display current path
+  inputs:
+    script: 'echo $(System.DefaultWorkingDirectory) - ${Path}'
+    failOnStderr: true
+
+- task: CmdLine@2
   displayName: Show build-log.txt file
   inputs:
     script: 'type .synopsys\polaris\coverity-tools-win64-2020.06\idir\builld-log.txt'
