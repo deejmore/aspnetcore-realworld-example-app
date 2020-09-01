@@ -59,9 +59,18 @@ steps:
     script: 'type .synopsys\polaris\data\coverity\2020.06\idir\build-log.txt'
     failOnStderr: false
 
-- task: CmdLine@2
-  displayName: Show build-log.txt file in coverity tools
+- task: SynopsysDetectTask@2
+  displayName: Run Blackduck and Polaris from detect
   inputs:
-    script: 'type .synopsys\polaris\coverity-tools-win64-2020.06\idir\build-log.txt'
+    Products: 'ALL'
+    BlackDuckService: 'poc188-blackduck-service-connection'
+    PolarisService: 'csprod-polaris-service-connection'
+    DetectVersion: 'latest'
+    DetectArguments: '--detect.project.name=aspnetcore-realword-example-app --detect.project.version.name=develop -de --polaris.command=analyze --coverity-ignore-capture-failure'
+
+- task: CmdLine@2
+  displayName: Show build-log.txt file in data coverity
+  inputs:
+    script: 'type .synopsys\polaris\data\coverity\2020.06\idir\build-log.txt'
     failOnStderr: false
 
