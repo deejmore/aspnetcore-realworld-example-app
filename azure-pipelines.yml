@@ -51,7 +51,7 @@ steps:
   displayName: Run Synopsys Polaris for Coverity
   inputs:
     polarisService: 'csprod-polaris-server-service-connection'
-    polarisCommand: '--co "coverity-ignore-capture-failure" analyze'
+    polarisCommand: '--co "--coverity-ignore-capture-failure" analyze'
 
 - task: CmdLine@2
   displayName: Show build-log.txt file in data coverity
