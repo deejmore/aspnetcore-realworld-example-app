@@ -33,13 +33,13 @@ steps:
   inputs:
     script: dir
 
-- task: SynopsysDetectTask@2
-  displayName: Run Synopsys Detect for Blackduck
-  inputs:
-    Products: 'BD'
-    BlackDuckService: 'poc188-blackduck-service-connection'
-    DetectVersion: 'latest'
-    DetectArguments: '--detect.project.name=aspnetcore-realword-example-app --detect.project.version.name=develop'
+#- task: SynopsysDetectTask@2
+#  displayName: Run Synopsys Detect for Blackduck
+#  inputs:
+#    Products: 'BD'
+#    BlackDuckService: 'poc188-blackduck-service-connection'
+#    DetectVersion: 'latest'
+#    DetectArguments: '--detect.project.name=aspnetcore-realword-example-app --detect.project.version.name=develop'
 
 - task: CmdLine@2
   displayName: Display Polaris YAML file
@@ -51,7 +51,7 @@ steps:
   displayName: Run Synopsys Polaris for Coverity
   inputs:
     polarisService: 'csprod-polaris-server-service-connection'
-    polarisCommand: 'analyze'
+    polarisCommand: '--coverity-ignore-capture-failure analyze'
 
 - task: CmdLine@2
   displayName: Show build-log.txt file in data coverity
@@ -59,18 +59,18 @@ steps:
     script: 'type .synopsys\polaris\data\coverity\2020.06\idir\build-log.txt'
     failOnStderr: false
 
-- task: SynopsysDetectTask@2
-  displayName: Run Blackduck and Polaris from detect
-  inputs:
-    Products: 'ALL'
-    BlackDuckService: 'poc188-blackduck-service-connection'
-    PolarisService: 'csprod-polaris-service-connection'
-    DetectVersion: 'latest'
-    DetectArguments: '--detect.project.name=aspnetcore-realword-example-app --detect.project.version.name=develop -de --polaris.command=analyze --coverity-ignore-capture-failure'
+#- task: SynopsysDetectTask@2
+#  displayName: Run Blackduck and Polaris from detect
+#  inputs:
+#    Products: 'ALL'
+#    BlackDuckService: 'poc188-blackduck-service-connection'
+#    PolarisService: 'csprod-polaris-service-connection'
+#    DetectVersion: 'latest'
+#    DetectArguments: '--detect.project.name=aspnetcore-realword-example-app --detect.project.version.name=develop -de --polaris.command=analyze --coverity-ignore-capture-failure'
 
-- task: CmdLine@2
-  displayName: Show build-log.txt file in data coverity
-  inputs:
-    script: 'type .synopsys\polaris\data\coverity\2020.06\idir\build-log.txt'
-    failOnStderr: false
+#- task: CmdLine@2
+#  displayName: Show build-log.txt file in data coverity
+#  inputs:
+#    script: 'type .synopsys\polaris\data\coverity\2020.06\idir\build-log.txt'
+#    failOnStderr: false
 
